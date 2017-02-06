@@ -43,7 +43,7 @@ module.exports = {
     // require.resolve('webpack/hot/dev-server'),
     require.resolve('react-dev-utils/webpackHotDevClient'),
     // We ship a few polyfills by default:
-    //require.resolve('./polyfills'),
+    require.resolve('./polyfills'),
     // Finally, this is your app's code:
     paths.appIndexJs
     // We include the app code last so that if there is a runtime error during
@@ -64,9 +64,36 @@ module.exports = {
     publicPath: publicPath
   },
 
+  // TODO resolve
+/*  resolve: {
+    // This allows you to set a fallback for where Webpack should look for modules.
+    // We read `NODE_PATH` environment variable in `paths.js` and pass paths here.
+    // We use `fallback` instead of `root` because we want `node_modules` to "win"
+    // if there any conflicts. This matches Node resolution mechanism.
+    // https://github.com/facebookincubator/create-react-app/issues/253
+    fallback: paths.nodePaths,
+    // These are the reasonable defaults supported by the Node ecosystem.
+    // We also include JSX as a common component filename extension to support
+    // some tools, although we do not recommend using it, see:
+    // https://github.com/facebookincubator/create-react-app/issues/290
+    extensions: ['.js', '.json', '.jsx', ''],
+    alias: {
+      // Support React Native Web
+      // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
+      'react-native': 'react-native-web'
+    }
+  },*/
+
   module: {
     rules: [
-// Default loader: load all assets that are not handled
+      // TODO eslint
+/*      {
+        test: /\.(js|jsx)$/,
+        loader: 'eslint',
+        include: paths.appSrc,
+        enforce: 'pre'
+      },*/
+      // Default loader: load all assets that are not handled
       // by other loaders with the url loader.
       // Note: This list needs to be updated with every change of extensions
       // the other loaders match.
@@ -107,6 +134,7 @@ module.exports = {
           cacheDirectory: true
         }
       },
+      // TODO postcss
       // "postcss" loader applies autoprefixer to our CSS.
       // "css" loader resolves paths in CSS and adds assets as dependencies.
       // "style" loader turns CSS into JS modules that inject <style> tags.
@@ -130,6 +158,7 @@ module.exports = {
     ]
   },
 
+  // TODO postcss
   // We use PostCSS for autoprefixing only.
 /*  postcss: function() {
     return [

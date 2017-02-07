@@ -157,6 +157,7 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
+              // We use PostCSS for autoprefixing only.
               plugins: function() {
                 return [
                   autoprefixer({

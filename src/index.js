@@ -1,26 +1,29 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { AppContainer } from 'react-hot-loader'
-import App from './App'
+import React from "react";
+import ReactDOM from "react-dom";
 
-const rootEl = document.getElementById('root');
+import {BrowserRouter} from "react-router-dom";
+import {AppContainer} from 'react-hot-loader'
 
-ReactDOM.render(
-  <AppContainer>
-    <App/>
-  </AppContainer>,
-  rootEl
-);
+import App from "./containers/App";
+
+const root = document.getElementById("root");
+
+const render = () => {
+  ReactDOM.render(
+    <AppContainer>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </AppContainer>,
+    root
+  );
+};
+
+render(App);
 
 // Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./App', () => {
-    const NextApp = require('./App').default;
-    ReactDOM.render(
-      <AppContainer>
-        <NextApp/>
-      </AppContainer>,
-      rootEl
-    );
+  module.hot.accept('./containers/App', () => {
+    render(App)
   });
 }

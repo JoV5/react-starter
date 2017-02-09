@@ -27,12 +27,15 @@ const nodePaths = (process.env.NODE_PATH || '')
   .filter(folder => !path.isAbsolute(folder))
   .map(resolveApp);
 
+let appname = process.argv.find(arg => arg.indexOf('app=') > -1);
+appname = appname ? appname.split('=')[1] : '';
+
 // config after eject: we're in ./config/
 module.exports = {
-  appBuild: resolveApp('build'),
-  appPublic: resolveApp('public'),
-  appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveApp('src/index.js'),
+  appBuild: resolveApp(`build/${appname}`),
+  appPublic: resolveApp(`public/${appname}`),
+  appHtml: resolveApp(`public/${appname}/index.html`),
+  appIndexJs: resolveApp(`src/${appname}/index.js`),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   yarnLockFile: resolveApp('yarn.lock'),

@@ -1,6 +1,17 @@
-###### React Hot Loader 3 的使用及遗留问题
 
-参考文章：
+1. 文件分割与懒加载
+2. 多入口
+3. 热更新
+
+use [lazy-load-react](https://github.com/JoV5/lazy-load-react) to support hot reload for react component
+
+##### Webpack2 的问题
+
+###### 不支持chunk的重命名
+
+##### React Hot Loader 3 的使用及遗留问题
+
+###### 参考文章：
 
 [Migration to 3.0](https://github.com/gaearon/react-hot-loader/tree/next/docs)
 
@@ -16,25 +27,4 @@
 
 [react-code-splitting](https://github.com/didierfranc/react-code-splitting)
 
-
-###### 其他starter-kits
-[更多starter-kits](https://github.com/gaearon/react-hot-loader/tree/master/docs#starter-kits)
-
-[redux-react-starter](https://github.com/didierfranc/redux-react-starter)
-
-[react-hot-boilerplate](https://github.com/gaearon/react-hot-boilerplate/tree/next)
-
-[react-cool-starter](https://github.com/wellyshen/react-cool-starter)
-
-[react-universal-boiler](https://github.com/strues/react-universal-boiler)
-
-[react-universally](https://github.com/ctrlplusb/react-universally)
-
-[react-redux-universal-boilerplate](https://github.com/kiki-le-singe/react-redux-universal-boilerplate)
-
-[react-starter](https://github.com/elios264/react-starter)
-
-[webpack-react-redux-starter](https://github.com/stsiarzhanau/webpack-react-redux-starter)
-
-[trowel](https://github.com/frux/trowel)
 

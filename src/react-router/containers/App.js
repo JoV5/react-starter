@@ -5,7 +5,7 @@ import {Route, Link} from "react-router-dom";
 import LogInPage from "./LogInPage";
 //import DashboardPage from "./DashboardPage";
 import MatchWhenAuthorized from "./MatchWhenAuthorized";
-import {lazymeF} from 'lazy-load-react';
+import lazyme from 'lazy-load-react';
 
 export default class App extends Component {
 
@@ -37,12 +37,12 @@ export default class App extends Component {
           <Link to="/dashboard">Dashboard</Link>
           {!isAuthenticated && <Link to="/login">Log in</Link>}
         </nav>
-        <Route exact path="/" component={lazymeF(() => System.import('./HomePage'))}/>
+        <Route exact path="/" component={lazyme(() => System.import('./HomePage'))}/>
         <Route path="/login" render={props => {
           return <LogInPage authenticate={this.authenticate} {...props}/>
         }}/>
         <MatchWhenAuthorized isAuthenticated={isAuthenticated} pattern="/dashboard"
-                             component={lazymeF(() => System.import('./DashboardPage'))}/>
+                             component={lazyme(() => System.import('./DashboardPage'))}/>
       </div>
     )
   }

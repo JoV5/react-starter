@@ -100,7 +100,10 @@ module.exports = {
         test: /\.(js|jsx)$/,
         loader: 'eslint-loader',
         include: paths.appSrc,
-        enforce: 'pre'
+        enforce: 'pre',
+        options: {
+          cache: true
+        }
       },
 
       // Default loader: load all assets that are not handled

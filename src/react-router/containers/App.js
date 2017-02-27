@@ -7,6 +7,9 @@ import LogInPage from "./LogInPage";
 import MatchWhenAuthorized from "./MatchWhenAuthorized";
 import lazyme from 'lazy-load-react';
 
+const HomePage = lazyme(() => System.import('./HomePage'));
+const DashboardPage = lazyme(() => System.import('./DashboardPage'));
+
 export default class App extends Component {
 
   constructor(props) {
@@ -37,12 +40,12 @@ export default class App extends Component {
           <Link to="/dashboard">Dashboard</Link>
           {!isAuthenticated && <Link to="/login">Log in</Link>}
         </nav>
-        <Route exact path="/" component={lazyme(() => System.import('./HomePage'))}/>
+        <Route exact path="/" component={HomePage}/>
         <Route path="/login" render={props => {
           return <LogInPage authenticate={this.authenticate} {...props}/>
         }}/>
         <MatchWhenAuthorized isAuthenticated={isAuthenticated} pattern="/dashboard"
-                             component={lazyme(() => System.import('./DashboardPage'))}/>
+                             component={DashboardPage}/>
       </div>
     )
   }

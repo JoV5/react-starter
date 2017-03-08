@@ -7,6 +7,10 @@ export default class DashboardPage extends Component {
     this.state = {};
   }
 
+  componentWillMount() {
+    console.log('componentWillMount')
+  }
+
   render() {
 
     // const { } = this.props;

@@ -8,6 +8,10 @@ export default class HomePage extends Component {
     this.state = {};
   }
 
+  componentWillMount() {
+    console.log('componentWillMount')
+  }
+
   render() {
 
     // const { } = this.props;

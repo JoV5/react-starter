@@ -9,7 +9,11 @@ export default class HomePage extends Component {
   }
 
   componentWillMount() {
-    console.log('componentWillMount')
+    console.log('HomePage-------------------componentWillMount')
+  }
+
+  componentWillReceiveProps() {
+    console.log('HomePage-------------------componentWillReceivesProps')
   }
 
   render() {

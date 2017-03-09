@@ -8,7 +8,11 @@ export default class DashboardPage extends Component {
   }
 
   componentWillMount() {
-    console.log('componentWillMount')
+    console.log('DashboardPage-------------------componentWillMount')
+  }
+
+  componentWillReceiveProps() {
+    console.log('DashboardPage-------------------componentWillReceivesProps')
   }
 
   render() {

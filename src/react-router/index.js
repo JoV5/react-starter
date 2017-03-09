@@ -8,11 +8,11 @@ import App from "./containers/App";
 
 const root = document.getElementById("root");
 
-const render = () => {
+const render = (Component) => {
   ReactDOM.render(
     <AppContainer>
       <BrowserRouter>
-        <App />
+        <Component />
       </BrowserRouter>
     </AppContainer>,
     root

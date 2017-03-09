@@ -17,7 +17,6 @@ export default class HomePage extends Component {
   }
 
   render() {
-    console.log('test')
     // const { } = this.props;
 
     // const { } = this.state;

@@ -1,5 +1,7 @@
 基于[create-react-app](https://github.com/facebookincubator/create-react-app) eject后项目文件
-##### 主要差异
+
+### 主要差异
+
 1. 使用webpack2
 
 2. 加入react-hot-loader3
@@ -8,9 +10,9 @@
 3. 多入口
 兼容原项目结构，主要目的在于避免反复安装依赖，可以当做一个项目目录，而不是单应用
 要使用多入口，需要在src和public目录下建相同的文件名项目，在启动时加入'-- app=[appname]'参数，示例如下：
-* npm start -- app=[appname]
-* npm run build -- app=[appname]
-* serve -s build/[appname]
+  * npm start -- app=[appname]
+  * npm run build -- app=[appname]
+  * serve -s build/[appname]
 
 4. code-splitting（懒加载）
 使用[lazy-load-react](https://github.com/JoV5/lazy-load-react)支持react组件的懒加载

@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
 import {BrowserRouter} from "react-router-dom";
 import {AppContainer} from 'react-hot-loader';
 
@@ -24,6 +23,6 @@ render(App);
 // Hot Module Replacement API
 if (module.hot) {
   module.hot.accept('./containers/App', () => {
-    render(App)
+    render(App);
   });
 }

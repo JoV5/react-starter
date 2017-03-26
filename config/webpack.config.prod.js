@@ -44,12 +44,6 @@ const extractTextPluginPublicPath= shouldUseRelativeAssetPaths
 const appConfig = fsExistsSync(paths.appConfigJs) ? require(paths.appConfigJs) : {};
 const appConfigEntry = appConfig.entry;
 const appConfigResolve = appConfig.resolve;
-const webpackEntry = {
-  main: [
-    require.resolve('./polyfills'),
-    paths.appIndexJs
-  ]
-};
 
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
@@ -63,7 +57,12 @@ module.exports = {
   devtool: 'source-map',
   
   // In production, we only want to load the polyfills and the app code.
-  entry: Object.assign(webpackEntry, appConfigEntry),
+  entry: Object.assign({
+    main: [
+      require.resolve('./polyfills'),
+      paths.appIndexJs
+    ]
+  }, appConfigEntry),
   
   output: {
     // The build folder.

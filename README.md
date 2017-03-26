@@ -17,13 +17,18 @@
 4. code-splitting（懒加载）  
 使用[lazy-load-react](https://github.com/JoV5/lazy-load-react)支持react组件的懒加载
 
-5. 库文件按需打包  
-需要在项目src下加入配置文件appconfig.js，参考示例配置
+5. 第三方库按需分离  
+需要在项目src下加入配置文件appconfig.js，参考[示例配置](https://github.com/JoV5/react-starter/blob/master/src/react-router/appconfig.js)
+
+6. 支持alias配置  
+参考[示例配置](https://github.com/JoV5/react-starter/blob/master/src/react-router/appconfig.js)
+
+详细差异与使用，请参考文章[用create-react-app定制自己的react项目模板](https://github.com/JoV5/blog/blob/master/%E5%89%8D%E7%AB%AF/React/%E7%94%A8create-react-app%E5%AE%9A%E5%88%B6%E8%87%AA%E5%B7%B1%E7%9A%84react%E9%A1%B9%E7%9B%AE%E6%A8%A1%E6%9D%BF.md)
 
 
-##### Webpack2 的问题
+### 一些问题
 
-1. 不支持chunk的重命名
+1. 使用import()代码分离不支持chunk的重命名
 
 2. React Hot Loader 3 的使用及遗留问题
 

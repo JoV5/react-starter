@@ -42,7 +42,8 @@ const extractTextPluginPublicPath= shouldUseRelativeAssetPaths
   : undefined;
 
 const appConfig = fsExistsSync(paths.appConfigJs) ? require(paths.appConfigJs) : {};
-const appConfigEntry = appConfig.entry || {};
+const appConfigEntry = appConfig.entry;
+const appConfigResolve = appConfig.resolve;
 const webpackEntry = {
   main: [
     require.resolve('./polyfills'),
@@ -56,11 +57,14 @@ const webpackEntry = {
 module.exports = {
   // Don't attempt to continue if there are any errors.
   bail: true,
+  
   // We generate sourcemaps in production. This is slow but gives good results.
   // You can exclude the *.map files from the build during deployment.
   devtool: 'source-map',
+  
   // In production, we only want to load the polyfills and the app code.
   entry: Object.assign(webpackEntry, appConfigEntry),
+  
   output: {
     // The build folder.
     path: paths.appBuild,
@@ -72,7 +76,8 @@ module.exports = {
     // We inferred the "public path" (such as / or /my-project) from homepage.
     publicPath: publicPath
   },
-  resolve: {
+  
+  resolve: Object.assign({
     // This allows you to set a fallback for where Webpack should look for modules.
     // We read `NODE_PATH` environment variable in `paths.js` and pass paths here.
     // We use `fallback` instead of `root` because we want `node_modules` to "win"
@@ -90,7 +95,7 @@ module.exports = {
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web'
     }
-  },
+  }, appConfigResolve),
 
   module: {
     rules: [
@@ -184,12 +189,6 @@ module.exports = {
         //loader: ExtractTextPlugin.extract('style', 'css?importLoaders=1!postcss')
         // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
       },
-      // JSON is not enabled by default in Webpack but both Node and Browserify
-      // allow it implicitly so we also enable it.
-      {
-        test: /\.json/,
-        loader: 'json-loader'
-      },
 
       // "file" loader for svg
       {
@@ -236,10 +235,6 @@ module.exports = {
     // It is absolutely essential that NODE_ENV was set to production here.
     // Otherwise React will be compiled in the very slow development mode.
     new webpack.DefinePlugin(env.stringified),
-    // This helps ensure the builds are consistent if source hasn't changed:
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    // Try to dedupe duplicated modules, if any:
-    new webpack.optimize.DedupePlugin(),
     // Minify the code.
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -252,7 +247,8 @@ module.exports = {
       output: {
         comments: false,
         screw_ie8: true
-      }
+      },
+      sourceMap: true
     }),
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
     new ExtractTextPlugin(cssFilename),
@@ -261,6 +257,11 @@ module.exports = {
     // having to parse `index.html`.
     new ManifestPlugin({
       fileName: 'asset-manifest.json'
+    }),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        context: __dirname
+      }
     })
   ],
   // Some libraries import Node modules but don't use them in the browser.

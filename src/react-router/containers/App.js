@@ -2,12 +2,12 @@ import React, {Component} from "react";
 import {Route, Link} from "react-router-dom";
 
 //import HomePage from "./HomePage";
-import LogInPage from "./LogInPage";
+import LogInPage from "Containers/LogInPage";
 //import DashboardPage from "./DashboardPage";
 import MatchWhenAuthorized from "./MatchWhenAuthorized";
 import lazyme from 'lazy-load-react';
 
-const HomePage = lazyme(() => System.import('./HomePage'));
+const HomePage = lazyme(() => System.import('Containers/HomePage'));
 const DashboardPage = lazyme(() => System.import('./DashboardPage'));
 
 export default class App extends Component {

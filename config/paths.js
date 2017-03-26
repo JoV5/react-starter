@@ -32,7 +32,7 @@ var nodePaths = (process.env.NODE_PATH || '')
   .filter(folder => !path.isAbsolute(folder))
   .map(resolveApp);
 
-let appname = process.argv.find(arg => arg.indexOf('app=') > -1);
+let appname = process.argv.find(arg => arg.indexOf('app=') === 0);
 appname = appname ? appname.split('=')[1] : '';
 
 var envPublicUrl = process.env.PUBLIC_URL;

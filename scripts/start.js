@@ -204,7 +204,7 @@ function addMiddleware(devServer) {
       secure: false,
       changeOrigin: true,
       ws: true,
-      xfwd: true
+      //xfwd: true
     });
     devServer.use(mayProxy, hpm);
 

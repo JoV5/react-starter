@@ -1,5 +1,16 @@
 基于[create-react-app](https://github.com/facebookincubator/create-react-app)创建的项目eject后，在不影响原有功能的前提下，进行了一些定制的react项目模板。
 
+命令行创建react项目移步[mult-react-scripts](https://github.com/JoV5/mult-react-scripts)
+若未安装[create-react-app](https://github.com/facebookincubator/create-react-app)，先安装
+
+> npm install create-react-app -g
+
+然后创建项目
+
+> create-react-app appname --scripts-version mult-react-scripts
+
+或者直接clone本项目使用。
+
 ### 主要差异
 
 1. 使用webpack2  

@@ -20,7 +20,7 @@ const publicUrl = '';
 const env = getClientEnvironment(publicUrl);
 
 const appConfig = fsExistsSync(paths.appConfigJs) ? require(paths.appConfigJs) : {};
-const appConfigEntry = appConfig.entry;
+const appConfigEntry = appConfig.entry || {};
 const appConfigResolve = appConfig.resolve;
 
 // This is the development configuration.
